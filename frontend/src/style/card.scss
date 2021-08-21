@@ -1,0 +1,27 @@
+@import url(style.css);
+@import "style";
+
+#result {
+    grid-template-columns: 100%;
+    gap: 1rem;
+    & > div {
+        display: flex;
+        align-items: center;
+        background-color: aqua;
+        border-radius: 10px;
+        padding: 1rem;
+    }
+    & > div > div {
+        flex: 1;
+    }
+    img {
+        height: 120px;
+        width: 120px;
+        object-fit: cover;
+    }
+    .total {
+        display: flex;
+        justify-content: flex-end;
+        font-weight: 600;
+    }
+}

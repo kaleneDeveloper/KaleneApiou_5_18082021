@@ -1,5 +1,143 @@
 @import url(style.css);
+@import url(normalize.css);
+* {
+  font-family: sans-serif;
+}
+
+nav {
+  width: 100%;
+  height: 70px;
+  background-color: red;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+nav div:last-child {
+  padding-right: 4rem;
+}
+
+nav div:first-child {
+  padding-left: 4rem;
+}
+
+nav div a {
+  text-decoration: none;
+  color: black;
+}
+
+nav div a:hover {
+  color: #ffb55e;
+}
+
+.container--block {
+  width: 80rem;
+  margin: 4rem auto;
+}
+
+#result {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(30rem, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  gap: 1rem;
+}
+
+#result .product {
+  background-color: aqua;
+  border-radius: 10px;
+  padding: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#result .product div:nth-child(1) {
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#result .product div:nth-child(1) div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#result .product div:nth-child(2) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+#result .product .btn {
+  border-radius: 10px;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+#result .product img {
+  height: 120px;
+  width: 120px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+@media screen and (max-width: calc(1280px + 64px)) {
+  .container--block {
+    width: calc(100% - 4rem);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container--block {
+    width: calc(100% - 2rem);
+    margin: 1rem auto;
+  }
+  #result {
+    -ms-grid-columns: (minmax(100%, 1fr))[auto-fit];
+        grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+  }
+}
+
+.container--block--product {
+  padding: 1rem;
+  background-color: bisque;
+}
+
 .container--block--product .card img {
-  height: 200px;
+  height: 400px;
+}
+
+#result .btn {
+  border-radius: 10px;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
 }
 /*# sourceMappingURL=product.css.map */

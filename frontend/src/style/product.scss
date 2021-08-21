@@ -1,6 +1,15 @@
 @import url(style.css);
+@import "style";
+
 .container--block--product {
+    padding: 1rem;
+    background-color: $tertiaire;
     .card img {
-        height: 200px;
+        height: 400px;
+    }
+}
+#result {
+    .btn {
+        @include btn;
     }
 }

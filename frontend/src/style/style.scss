@@ -1,0 +1,74 @@
+@import url(normalize.css);
+$primary: red;
+$secondary: aqua;
+$tertiaire: bisque;
+$fontFamilyPrimary: sans-serif;
+* {
+    font-family: $fontFamilyPrimary;
+}
+
+nav {
+    width: 100%;
+    height: 70px;
+    background-color: $primary;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 600;
+    font-size: 1.5rem;
+    div:last-child {
+        padding-right: 4rem;
+    }
+    div:first-child {
+        padding-left: 4rem;
+    }
+    div a {
+        text-decoration: none;
+        color: black;
+        &:hover {
+            color: darken($tertiaire, 20%);
+        }
+    }
+}
+.container--block {
+    width: 80rem;
+    margin: 4rem auto;
+    background-color: $tertiaire;
+}
+#result {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    gap: 1rem;
+    .product {
+        background-color: $secondary;
+        border-radius: 10px;
+        padding: 1rem;
+
+        div:nth-child(2) {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+        input {
+            border-radius: 10px;
+            border: none;
+            padding: 0.5rem;
+            cursor: pointer;
+        }
+    }
+}
+
+@media screen and (max-width: calc(1280px + 64px)) {
+    .container--block {
+        width: calc(100% - 4rem);
+    }
+}
+@media screen and (max-width: 768px) {
+    .container--block {
+        width: calc(100% - 2rem);
+        margin: 1rem auto;
+    }
+    #result {
+        grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+    }
+}

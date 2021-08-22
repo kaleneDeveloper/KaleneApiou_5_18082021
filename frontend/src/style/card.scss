@@ -4,24 +4,92 @@
 #result {
     grid-template-columns: 100%;
     gap: 1rem;
+    span {
+        font-weight: 600;
+    }
+    #quantity {
+        margin: 0 0.25rem;
+        border-radius: 5px;
+    }
+    i {
+        margin-left: 0.5rem;
+        font-size: 1.5rem;
+        cursor: pointer;
+        &:hover {
+            color: red;
+        }
+    }
+    img {
+        height: 80px;
+        width: 120px;
+    }
     & > div {
         display: flex;
         align-items: center;
         background-color: aqua;
         border-radius: 10px;
-        padding: 1rem;
+        padding: 0.5rem;
     }
-    & > div > div {
-        flex: 1;
-    }
-    img {
-        height: 120px;
-        width: 120px;
-        object-fit: cover;
+    .card {
+        div:nth-child(1),
+        div:nth-child(4),
+        div:nth-child(5),
+        div:nth-child(3) {
+            flex: 1;
+            white-space: nowrap;
+        }
+        div:nth-child(4),
+        div:nth-child(5),
+        div:nth-child(3) {
+            text-align: end;
+        }
+        div:nth-child(5) {
+            text-align: end;
+            padding-right: 2%;
+        }
+        div:nth-child(n + 2):nth-child(-n + 2) {
+            flex: 2;
+        }
+        #more,
+        #less {
+            padding: 0;
+            width: 1.5rem;
+            height: 1.5rem;
+        }
     }
     .total {
         display: flex;
         justify-content: flex-end;
         font-weight: 600;
+        padding: 1rem;
+    }
+    .cardEmpty {
+        display: flex;
+        font-weight: 600;
+        justify-content: space-between;
+    }
+    #empty {
+        justify-content: flex-end;
+        & input {
+            @include btn;
+        }
+    }
+}
+@media screen and (max-width: 768px) {
+    #result {
+        .card {
+            min-height: 3rem;
+            div:nth-child(3) span:nth-child(1) {
+                display: none;
+            }
+            div:nth-child(1) {
+                display: none;
+            }
+            div:nth-child(2) {
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+            }
+        }
     }
 }

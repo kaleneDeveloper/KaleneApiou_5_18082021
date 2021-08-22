@@ -17,7 +17,7 @@ nav {
       -ms-flex-pack: justify;
           justify-content: space-between;
   font-weight: 600;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
 }
 
 nav div:last-child {
@@ -62,6 +62,10 @@ nav div a:hover {
       grid-template-rows: repeat(3, auto);
 }
 
+#result .product h2 {
+  margin-top: 0;
+}
+
 #result .product a {
   -ms-grid-column: 1;
   -ms-grid-column-span: 2;
@@ -100,12 +104,12 @@ nav div a:hover {
   cursor: pointer;
 }
 
-#result .product img {
+#result img {
   height: 120px;
   width: 120px;
   -o-object-fit: cover;
      object-fit: cover;
-  padding-bottom: 1rem;
+  border-radius: 10px;
 }
 
 @media screen and (max-width: calc(1280px + 64px)) {
@@ -137,13 +141,36 @@ nav div a:hover {
   #result .product > div,
   #result .product a {
     text-align: center;
+  }
+  #result .product div:nth-child(3),
+  #result .product div:nth-child(4) {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
   }
+  #result .product div:nth-child(4) {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+            order: 2;
+  }
+  #result .product div:nth-child(5) {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
+  }
+  #result .product p {
+    text-align: justify;
+  }
   #result .product img {
-    height: 150px;
-    width: 150px;
+    height: 250px;
+    width: 300px;
+    max-width: 100%;
     -o-object-fit: cover;
        object-fit: cover;
   }

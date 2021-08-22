@@ -1,4 +1,4 @@
-import { apiTeddies, displayNumberOfProducds, Fetch, AddCard } from "./function.js";
+import { apiTeddies, displayNumberOfProducds, Fetch, Card } from "./function.js";
 
 let product = [];
 
@@ -6,10 +6,11 @@ const fetchProduct = async () => {
     const queryString_Url_id = window.location.search;
     const apiTeddiesId = apiTeddies + queryString_Url_id.slice(1);
     await new Fetch().fetchProduct(apiTeddiesId).then((res) => (product = res));
+    document.title = "Orinoco - " + product.name;
 };
 
 const addToCard = () => {
-    new AddCard().addCard();
+    new Card().addCard();
 };
 
 const display = () => {

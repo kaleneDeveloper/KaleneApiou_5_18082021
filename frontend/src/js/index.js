@@ -1,4 +1,4 @@
-import { displayNumberOfProducds, AddCard, Fetch } from "./function.js";
+import { displayNumberOfProducds, Card, Fetch } from "./function.js";
 
 let products = [];
 
@@ -7,7 +7,7 @@ const fetchProducts = async () => {
 };
 
 const addToCard = () => {
-    new AddCard().addCard();
+    new Card().addCard();
 };
 
 const display = () => {

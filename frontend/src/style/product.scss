@@ -10,7 +10,7 @@
     }
 }
 #result {
-    .btn {
+    input {
         @include btn;
     }
 }

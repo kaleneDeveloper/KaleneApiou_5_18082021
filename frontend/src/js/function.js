@@ -35,37 +35,44 @@ class Card {
                 localStorage.getItem("NumberOfProduct")
             );
         };
-        const fetchProduct = async (dataId) => {
-            await fetch(apiTeddies + dataId)
-                .then((res) => res.json())
-                .then((data) => {
-                    if (
-                        card.length !== 0 &&
-                        card.find((id) => id._id === data._id)
-                    ) {
-                        let sameProduct = card.find(
-                            (id) => id._id === data._id
-                        );
-                        localStorage.setItem(
-                            "card",
-                            JSON.stringify(sameProduct.quantity++)
-                        );
-                        localStorage.setItem("card", JSON.stringify(card));
-                        console.log(sameProduct.name + " ajouté au panier");
-                    } else {
-                        data.quantity = 1;
-                        card.push(data);
-                        localStorage.setItem("card", JSON.stringify(card));
-                        console.log(data.name + " ajouté au panier");
-                    }
-                });
-            updateNumberOfproduct();
-        };
-
         for (let i = 0; i < btn.length; i++) {
             btn[i].addEventListener("click", (e) => {
                 let dataId = e.target.getAttribute("data-id");
-                fetchProduct(dataId);
+                const fetchProduct = async () => {
+                    await fetch(apiTeddies + dataId)
+                        .then((res) => res.json())
+                        .then((data) => {
+                            if (
+                                card.length !== 0 &&
+                                card.find((id) => id._id === data._id)
+                            ) {
+                                let sameProduct = card.find(
+                                    (id) => id._id === data._id
+                                );
+                                localStorage.setItem(
+                                    "card",
+                                    JSON.stringify(sameProduct.quantity++)
+                                );
+                                localStorage.setItem(
+                                    "card",
+                                    JSON.stringify(card)
+                                );
+                                console.log(
+                                    sameProduct.name + " ajouté au panier"
+                                );
+                            } else {
+                                data.quantity = 1;
+                                card.push(data);
+                                localStorage.setItem(
+                                    "card",
+                                    JSON.stringify(card)
+                                );
+                                console.log(data.name + " ajouté au panier");
+                            }
+                        });
+                    updateNumberOfproduct();
+                };
+                fetchProduct();
             });
         }
     }
@@ -92,18 +99,16 @@ class Card {
                     localStorage.getItem("NumberOfProduct")
                 );
             };
-            const length = more.length === undefined ? 1 : more.length;
             let total = 0;
             for (let i = 0; i < card.length; i++) {
                 total += (card[i].price * card[i].quantity) / 100;
             }
             const totalDisplay = document.querySelector(".total span");
+            const more = document.querySelectorAll("#more");
+            const less = document.querySelectorAll("#less");
 
-            for (let i = 0; i < length; i++) {
-                let moreVar = more.length === undefined ? more : more[i];
-                let lessVar = more.length === undefined ? less : less[i];
-
-                moreVar.addEventListener("click", (e) => {
+            for (let i = 0; i < more.length; i++) {
+                more[i].addEventListener("click", (e) => {
                     const id = e.path[2].getAttribute("data-id");
                     for (let i = 0; i < card.length; i++) {
                         let quantityVar =
@@ -137,10 +142,8 @@ class Card {
                         }
                     }
                 });
-
-                lessVar.addEventListener("click", (e) => {
+                less[i].addEventListener("click", (e) => {
                     const id = e.path[2].getAttribute("data-id");
-
                     for (let i = 0; i < card.length; i++) {
                         let quantityVar =
                             quantity.length === undefined
@@ -190,17 +193,13 @@ class Card {
             const length =
                 deleteProduct.length === undefined ? 1 : deleteProduct.length;
             for (let i = 0; i < length; i++) {
-                let deleteProductVar =
-                    deleteProduct.length === undefined
-                        ? deleteProduct
-                        : deleteProduct[i];
+                const deleteProduct =
+                    document.querySelectorAll("#deleteProduct");
 
-                deleteProductVar.addEventListener("click", (e) => {
+                deleteProduct[i].addEventListener("click", (e) => {
                     const id = e.path[2].getAttribute("data-id");
                     for (let i = 0; i < card.length; i++) {
                         if (id === card[i]._id) {
-                            console.log(i);
-                            console.log("delete");
                             card.splice(i, i + 1);
                             localStorage.setItem("card", JSON.stringify(card));
                             document.location.reload();

@@ -3,12 +3,17 @@ $primary: red;
 $secondary: aqua;
 $tertiaire: bisque;
 $fontFamilyPrimary: sans-serif;
+:root {
+    --select-border: #777;
+    --select-focus: blue;
+    --select-arrow: var(--select-border);
+    --box-shadow-base: 1px 5px 10px rgba(0, 0, 0, 0.3);
+}
 @mixin btn {
     border-radius: 10px;
-    border: none;
     padding: 0.5rem;
     cursor: pointer;
-
+    border: 0.5px solid var(--select-border);
     &:hover {
         color: red;
         box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.3);
@@ -60,7 +65,7 @@ nav {
         padding: 1rem;
         &:hover {
             box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.3);
-            background-color: darken($secondary, 15%);
+            // background-color: darken($secondary, 15%);
         }
         a {
             display: grid;
@@ -106,6 +111,24 @@ nav {
                 margin: 0;
             }
         }
+    }
+    input,
+    select {
+        cursor: pointer;
+        border: 1px solid var(--select-border);
+        font-size: 1.25rem;
+    }
+    select {
+        max-width: 100%;
+        border: 1px solid var(--select-border);
+        border-radius: 0.25em;
+        padding: 0.25em 0.5em;
+        font-size: 1.25rem;
+        cursor: pointer;
+        line-height: 1.1;
+        background-color: #fff;
+        background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
+        outline: none;
     }
 }
 

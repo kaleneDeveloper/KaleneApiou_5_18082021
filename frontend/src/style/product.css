@@ -1,5 +1,9 @@
 @import url(style.css);
 @import url(normalize.css);
+:root {
+  --box-shadow-base: 1px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
 * {
   font-family: sans-serif;
 }
@@ -60,7 +64,6 @@ nav div a:hover {
 #result .product:hover {
   -webkit-box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.3);
           box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.3);
-  background-color: #00b3b3;
 }
 
 #result .product a {
@@ -71,10 +74,6 @@ nav div a:hover {
   -ms-grid-rows: (auto)[3];
       grid-template-rows: repeat(3, auto);
   text-decoration: none;
-  border-radius: 10px;
-  border: none;
-  padding: 0.5rem;
-  cursor: pointer;
 }
 
 #result .product a h2 {
@@ -118,13 +117,20 @@ nav div a:hover {
   font-size: 1.5rem;
 }
 
-#result .product a:hover {
+#result .product a input {
+  border-radius: 10px;
+  padding: 0.5rem;
+  cursor: pointer;
+  border: 0.5px solid black;
+}
+
+#result .product a input:hover {
   color: red;
   -webkit-box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.3);
           box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.3);
 }
 
-#result .product a:active {
+#result .product a input:active {
   color: red;
   -webkit-box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.3);
           box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.3);
@@ -204,9 +210,9 @@ nav div a:hover {
 
 #result input {
   border-radius: 10px;
-  border: none;
   padding: 0.5rem;
   cursor: pointer;
+  border: 0.5px solid black;
 }
 
 #result input:hover {
@@ -220,5 +226,9 @@ nav div a:hover {
   -webkit-box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.3);
           box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.3);
   background-color: #d9d9d9;
+}
+
+#result .card select {
+  margin: 1rem 0 2rem 0;
 }
 /*# sourceMappingURL=product.css.map */

@@ -14,15 +14,30 @@ const display = async () => {
                     return price.toFixed(2);
                 };
                 total += price() * products.quantity;
+                let colors = [];
+
+                products.colors.map((color) => {
+                    if (color === products.color) {
+                        colors.push(`<option selected>${color}</option>`);
+                    } else {
+                        colors.push(`<option>${color}</option>`);
+                    }
+                });
                 return `
-                <div class="card" data-id="${products._id}">
+                <div class="card product" data-id="${products._id}" data-option="${
+                    products.color
+                }" data-newId="${products.newId}">
                     <div><a href="./produit.html?${products._id}"><img src="${
                     products.imageUrl
                 }" alt="${products.description}"></a></div>
                     <div><a href="./produit.html?${products._id}">Produit : ${
                     products.name
                 }</a></div>
-                    <div> <span>Quantité :</span> <input id="less" type="submit" value="-"><span id="quantity">${
+                
+                    <div><span>Option : </span><select id="colors">${colors.join(
+                        ""
+                    )}</select ></div>
+                    <div><span>Quantité :</span> <input id="less" type="submit" value="-"><span id="quantity">${
                         products.quantity
                     }</span><input id="more" type="submit" value="+"></div>
                     <div class="price">Prix : <span>${price()} €</span></div>
@@ -44,6 +59,7 @@ const emptyCard = () => {
 const card = () => {
     new Card().lessAndMore();
     new Card().deleteProduct();
+    new Card().option();
 };
 display();
 emptyCard();

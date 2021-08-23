@@ -4,6 +4,12 @@
 #result {
     grid-template-columns: 100%;
     gap: 1rem;
+    .product:hover {
+        box-shadow: none;
+    }
+    .product {
+        padding: 0.5rem;
+    }
     span {
         font-weight: 600;
     }
@@ -31,30 +37,72 @@
         padding: 0.5rem;
     }
     .card {
+        gap: 1rem;
         div:nth-child(1),
         div:nth-child(4),
         div:nth-child(5),
-        div:nth-child(3) {
+        div:nth-child(6) {
             flex: 1;
             white-space: nowrap;
         }
-        div:nth-child(4),
-        div:nth-child(5),
         div:nth-child(3) {
-            text-align: end;
+            flex: 3;
+            white-space: nowrap;
         }
+        div:nth-child(4),
         div:nth-child(5) {
             text-align: end;
-            padding-right: 2%;
+        }
+        div:nth-child(6) {
+            display: flex;
+            text-align: end;
+            justify-content: center;
         }
         div:nth-child(n + 2):nth-child(-n + 2) {
-            flex: 2;
+            flex: 5;
+        }
+        div:nth-child(2) {
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
         }
         #more,
         #less {
             padding: 0;
-            width: 1.5rem;
-            height: 1.5rem;
+            width: 1.7rem;
+            height: 1.7rem;
+            border: 1px solid var(--select-border);
+            border-radius: 0.25em;
+            padding: 0.25em 0.5em;
+            font-size: 1rem;
+            cursor: pointer;
+            line-height: 1;
+            background-color: #fff;
+            background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
+            outline: none;
+            align-items: center;
+            &:active {
+                box-shadow: 1px 0px 2px rgba(0, 0, 0, 0.2);
+            }
+        }
+        input,
+        select {
+            cursor: pointer;
+        }
+        div:nth-child(3) {
+            position: relative;
+        }
+        div:nth-child(3) select {
+            max-width: 100%;
+            border: 1px solid var(--select-border);
+            border-radius: 0.25em;
+            padding: 0.25em 0.5em;
+            font-size: 1rem;
+            cursor: pointer;
+            line-height: 1;
+            background-color: #fff;
+            background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
+            outline: none;
         }
     }
     .total {
@@ -73,23 +121,42 @@
         justify-content: flex-end;
         & input {
             @include btn;
+            border-color: var(--select-border);
         }
     }
 }
 @media screen and (max-width: 768px) {
     #result {
         .card {
+            gap: 0;
             min-height: 3rem;
-            div:nth-child(3) span:nth-child(1) {
+            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: 1fr 1fr;
+            div:nth-child(4) span:nth-child(1),
+            div:nth-child(3) span {
                 display: none;
             }
             div:nth-child(1) {
                 display: none;
             }
             div:nth-child(2) {
-                text-overflow: ellipsis;
-                overflow: hidden;
-                white-space: nowrap;
+                grid-column: 1/4;
+            }
+            div:nth-child(3) {
+                justify-content: flex-end;
+                text-align: end;
+            }
+            div:nth-child(4) {
+                grid-column: 3/4;
+            }
+            div:nth-child(5) {
+                grid-column: 4/5;
+            }
+            div:nth-child(6) {
+                grid-column: 5/6;
+                grid-row: 1/3;
             }
         }
     }

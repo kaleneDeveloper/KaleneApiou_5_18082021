@@ -1,4 +1,11 @@
 @import url(normalize.css);
+:root {
+  --select-border: #777;
+  --select-focus: blue;
+  --select-arrow: var(--select-border);
+  --box-shadow-base: 1px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
 * {
   font-family: sans-serif;
 }
@@ -59,7 +66,6 @@ nav div a:hover {
 #result .product:hover {
   -webkit-box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.3);
           box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.3);
-  background-color: #00b3b3;
 }
 
 #result .product a {
@@ -115,9 +121,9 @@ nav div a:hover {
 
 #result .product a input {
   border-radius: 10px;
-  border: none;
   padding: 0.5rem;
   cursor: pointer;
+  border: 0.5px solid var(--select-border);
 }
 
 #result .product a input:hover {
@@ -144,6 +150,27 @@ nav div a:hover {
 
 #result .product a p {
   margin: 0;
+}
+
+#result input,
+#result select {
+  cursor: pointer;
+  border: 1px solid var(--select-border);
+  font-size: 1.25rem;
+}
+
+#result select {
+  max-width: 100%;
+  border: 1px solid var(--select-border);
+  border-radius: 0.25em;
+  padding: 0.25em 0.5em;
+  font-size: 1.25rem;
+  cursor: pointer;
+  line-height: 1.1;
+  background-color: #fff;
+  background-image: -webkit-gradient(linear, left bottom, left top, from(#f9f9f9), color-stop(33%, #fff));
+  background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
+  outline: none;
 }
 
 @media screen and (max-width: calc(1280px + 64px)) {

@@ -9,10 +9,6 @@ const fetchProduct = async () => {
     document.title = "Orinoco - " + product.name;
 };
 
-const addToCard = () => {
-    new Card().addCard();
-};
-
 const display = () => {
     displayNumberOfProducds();
     if (product.length === 0) {
@@ -21,7 +17,7 @@ const display = () => {
         let colors = [];
 
         product.colors.map((color) => {
-            colors.push(`<li>${color}</li>`);
+            colors.push(`<option>${color}</option>`);
         });
         result.innerHTML = `
             <div class="card">
@@ -30,7 +26,9 @@ const display = () => {
                     <img src="${product.imageUrl}" alt="${product.description}">
                     <p>${product.description}</p>
                     <p>${(product.price/100).toFixed(2)} €</p>
-                    <p>${colors.join("")}</p>
+                    <select id="colors">
+                    ${colors.join("")}
+                    </select >
                 </div>
                 <div>
                     <input class="btn" data-id=${
@@ -39,6 +37,10 @@ const display = () => {
                 </div>
             </div>`;
     }
+};
+
+const addToCard = () => {
+    new Card().addCard();
 };
 
 fetchProduct()

@@ -1,4 +1,4 @@
-const apiTeddies = "http://localhost:3000/api/teddies/" || `http://kalenedeveloper.github.io/KaleneApiou_5_18082021/:${process.env.PORT}/api/teddies/`;
+const apiTeddies = "http://localhost:3000/api/teddies/" || `http://kalenedeveloper.github.io/KaleneApiou_5_18082021/api/teddies/`;
 let card = JSON.parse(localStorage.getItem("card"));
 if (card === null) {
     card = [];

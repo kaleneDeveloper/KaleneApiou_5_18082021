@@ -1,4 +1,4 @@
-import { displayNumberOfProducds, Card, Fetch } from "./function.js";
+import { displayNumberOfProducds, Fetch } from "./function.js";
 
 let products = [];
 

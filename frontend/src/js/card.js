@@ -13,6 +13,7 @@ const display = async () => {
                     let price = products.price / 100;
                     return price.toFixed(2);
                 };
+                
                 total += price() * products.quantity;
                 let colors = [];
 

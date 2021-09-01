@@ -8,10 +8,8 @@ if (card === null) {
 
 const displayNumberOfProducds = () => {
     const cardNumber = document.querySelector(".card span");
-    if (
-        (cardNumber.textContent =
-            JSON.parse(localStorage.getItem("NumberOfProduct")) === null)
-    ) {
+
+    if (!cardNumber.textContent) {
         cardNumber.textContent = 0;
     } else {
         cardNumber.textContent = JSON.parse(
@@ -169,7 +167,7 @@ class Card {
                         } else if (
                             id === card[i]._id &&
                             newId === card[i].newId &&
-                            card[i].quantity === 99
+                            card[i].quantity <= 99
                         ) {
                             console.log(
                                 "Vous ne pouvez pas dépaser 99 produits"
@@ -241,13 +239,7 @@ class Card {
                         e.path[2].getAttribute("data-newId")
                     );
                     if (newId === card[i].newId) {
-                        if (i === 0) {
-                            let x = 1;
-                            card.splice(i, x);
-                        } else {
-                            let x = i;
-                            card.splice(i, x);
-                        }
+                        card.splice(i, 1);
                         localStorage.setItem("card", JSON.stringify(card));
                         document.location.reload();
                         updateNumberOfproduct();
@@ -279,7 +271,6 @@ class Fetch {
             .then((data) => (this.products = data));
         return this.products;
     }
-
     async fetchProduct(apiTeddiesId) {
         await fetch(apiTeddiesId)
             .then((res) => res.json())
